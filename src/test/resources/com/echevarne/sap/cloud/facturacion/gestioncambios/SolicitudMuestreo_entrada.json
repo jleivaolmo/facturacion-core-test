@@ -1,0 +1,113 @@
+{
+    "codigoOficinaVentas": "0001",
+    "codigoUsuarioExterno": "MICASTANED",
+    "codigoSistema": 1,
+    "codigoPeticion": "PRUEBA0001",
+    "peticion": [{
+        "codigoPeticion": "PRUEBA0001",
+        "tipoPeticion": 1,
+        "codigoDelegacion": "76",
+        "nifCliente": "PRIVADO",
+        "cargoPeticion": "1231",
+        "esMuestraRemitida": true,
+        "esPrivado": true,
+        "fechas": {
+            "fechaPeticion": "2020-02-26",
+            "fechaTomaMuestra": "2020-02-25",
+            "fechaRecepcionMuestra": "2020-02-26"
+        },
+        "interlocutores": [
+            {
+                "rolInterlocutor": "ZC",
+                "codigoInterlocutor": "56226",
+                "nombreInterlocutor": "DRA. CALDERON RUIZ"
+            },
+            {
+                "rolInterlocutor": "ZR",
+                "codigoInterlocutor": "56226",
+                "nombreInterlocutor": "DRA. CALDERON RUIZ",
+                "direccionInterlocutor": "ALAMEDA DE COLON NÂº 15 - 1Âº",
+                "provinciaInterlocutor": "29"
+            },
+            {
+                "rolInterlocutor": "ZH",
+                "codigoInterlocutor": "13229580",
+                "nifInterlocutor": "44576201Q",
+                "nombreInterlocutor": "Mª ISABEL",
+                "primApellidoInterlocutor": "BENITO",
+                "segApellidoInterlocutor": "MODIFICADA",
+                "tipoIdentificacion": "1",
+                "codigoIdentificacion": "44576201Q"
+            },
+            {
+                "rolInterlocutor": "ZP",
+                "codigoInterlocutor": "13229580",
+                "nifInterlocutor": "44576201Q",
+                "nombreInterlocutor": "PEPITO",
+                "primApellidoInterlocutor": "DE LOS",
+                "segApellidoInterlocutor": "PALOTES",
+                "tipoIdentificacion": "1",
+                "codigoIdentificacion": "00000000T"
+            }
+        ],
+        "pruebas": [
+            {
+                "idItem": 1,
+                "codigoPrueba": "1_A0050",
+                "codigoMaterial": "A0050",
+                "descripcionMaterial": "CitologÃ­a / cervic",
+                "cantidadRequerida": 1,
+                "codigoMaterialFacturacion": "CITOV",
+                "delegacionProductiva": "49",
+                "esFacturable": true,
+                "estados": [
+                    {
+                        "codigoEstado": "VA",
+                        "fechaEstado": "2020-03-04"
+                    }
+                ],
+                "alertas": [{
+                    "codigoAlerta": "FD"
+                }]
+            },
+            {
+                "idItem": 2,
+                "codigoPrueba": "2_A0050",
+                "codigoMaterial": "A0050",
+                "descripcionMaterial": "Citologíaa / cervic",
+                "cantidadRequerida": 1,
+                "codigoMaterialFacturacion": "CITOV",
+                "delegacionProductiva": "49",
+                "esFacturable": true,
+                "estados": [
+                    {
+                        "codigoEstado": "VA",
+                        "fechaEstado": "2020-03-04"
+                    }
+                ],
+                "alertas": [{
+                    "codigoAlerta": "FD"
+                }]
+            },
+            {
+                "idItem": 3,
+                "codigoPrueba": "2_A0051",
+                "codigoMaterial": "A0032",
+                "descripcionMaterial": "CitologÃ­a / cervic",
+                "cantidadRequerida": 1,
+                "codigoMaterialFacturacion": "CITOV",
+                "delegacionProductiva": "49",
+                "esFacturable": true,
+                "estados": [
+                    {
+                        "codigoEstado": "VA",
+                        "fechaEstado": "2020-03-04"
+                    }
+                ],
+                "alertas": [{
+                    "codigoAlerta": "FD"
+                }]
+            }
+        ]
+    }]
+}

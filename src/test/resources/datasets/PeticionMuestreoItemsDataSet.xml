@@ -1,0 +1,28 @@
+<dataset>
+	<T_PeticionMuestreoItems
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        fk_PeticionMuestreo="1"
+        codigoPrueba="codigoPrueba"
+        cantidadRequerida="1.0"
+        codigoCargo="codigoCargo"
+        codigoCliente="codigoCliente"
+        codigoLote="codigoLote"
+        codigoMaterial="codigoMaterial"
+        codigoMaterialFacturacion="codigoMaterialFacturacion"
+        delegacionProductiva="delegacionProductiva"
+        descripcionMaterial="descripcionMaterial"
+        descripcionMaterialFacturacion="descripcionMaterialFacturacion"
+        esFacturable="1"
+        esInformada="1"
+        esPerfil="1"
+        esPrivado="1"
+        esTerceros="1"
+        nifCliente="nifCliente"
+        tipoMuestra="1"
+        unidadMaterial="unidadMaterial"
+        idItem="1"
+	/>
+</dataset>

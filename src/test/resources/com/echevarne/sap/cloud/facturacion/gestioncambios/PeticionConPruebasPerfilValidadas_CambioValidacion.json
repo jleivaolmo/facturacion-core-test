@@ -1,0 +1,185 @@
+{
+    "codigoOficinaVentas": "0006",
+    "codigoPeticion": "T01672645",
+    "codigoSistema": "1",
+    "codigoUsuarioExterno": "BRIUL",
+    "estados": [],
+    "peticion": [
+        {
+            "alertas": [],
+            "cargoPeticion": "05279",
+            "clinicos": {},
+            "codigoDelegacion": "0006",
+            "codigoIdioma": "ES",
+            "codigoPeticion": "T01672645",
+            "contenedor": [
+                {
+                    "cantidadContenedor": 1.00,
+                    "codigoContenedor": "EDTA",
+                    "descripcionContenedor": "TUBO EDTA"
+                },
+                {
+                    "cantidadContenedor": 1.00,
+                    "codigoContenedor": "TO10",
+                    "descripcionContenedor": "TUBO ORINA 10 mL"
+                },
+                {
+                    "cantidadContenedor": 3.00,
+                    "codigoContenedor": "TS",
+                    "descripcionContenedor": "TUBO SUERO GEL"
+                }
+            ],
+            "esInmediato": false,
+            "esMuestraRemitida": true,
+            "esPresupuesto": false,
+            "esPrivado": false,
+            "estados": [],
+            "fechas": {
+                "fechaPeticion": "2021-07-02",
+                "fechaRecepcionMuestra": "2021-07-02",
+                "fechaTomaMuestra": "2021-07-01"
+            },
+            "interlocutores": [
+                {
+                    "codigoIdentificacion": "78064841N",
+                    "codigoIdioma": "ES",
+                    "codigoInterlocutor": "914153",
+                    "codigoPaisInterlocutor": "ES",
+                    "nombreInterlocutor": "ANA MARIA",
+                    "primApellidoInterlocutor": "BOLADERES",
+                    "rolInterlocutor": "ZH",
+                    "segApellidoInterlocutor": "AGUSTI",
+                    "telefono1Interlocutor": "973446092",
+                    "telefono2Interlocutor": "636248675",
+                    "tipoIdentificacion": "1",
+                    "tratamientoInterlocutor": "Sra."
+                },
+                {
+                    "codigoInterlocutor": "35326",
+                    "codigoPaisInterlocutor": "ES",
+                    "nombreInterlocutor": "PRISMA, SERVEIS MEDICS I SANITARIS",
+                    "oficinaVentasCopa": "0006",
+                    "provinciaInterlocutor": "25",
+                    "rolInterlocutor": "ZR"
+                },
+                {
+                    "codigoInterlocutor": "7571",
+                    "nombreInterlocutor": "DKV SEGUROS",
+                    "rolInterlocutor": "ZC"
+                },
+                {
+                    "codigoEspecialidad": "Medicina general",
+                    "codigoInterlocutor": "2503063",
+                    "nombreInterlocutor": "MONTSERRAT",
+                    "numeroColegiado": "2503063",
+                    "primApellidoInterlocutor": "ROMIGUER",
+                    "rolInterlocutor": "ZP",
+                    "segApellidoInterlocutor": "SALMONS",
+                    "tratamientoInterlocutor": "DRA."
+                }
+            ],
+            "medico": {},
+            "nifCliente": "A50004209",
+            "operacion": {
+                "codigoOperacion": "71968203"
+            },
+            "paciente": {
+                "codigoPoliza": "1230000302560145710"
+            },
+            "pruebas": [
+                {
+                    "alertas": [],
+                    "cantidadRequerida": 1.00,
+                    "codigoMaterial": "999",
+                    "codigoMaterialFacturacion": "999P",
+                    "codigosSnomed": [],
+                    "delegacionProductiva": "0098",
+                    "dependeResultado": false,
+                    "descripcionMaterial": "HEMOGRAMA COMPLETO",
+                    "esFacturable": false,
+                    "esPerfil": true,
+                    "esPrivado": false,
+                    "esTerceros": false,
+                    "estados": [],
+                    "idItem": "1",
+                    "idParent": "0",
+                    "nifCliente": "A50004209",
+                    "tipoMuestra": "SV",
+                    "tipoPosicion": 0
+                },
+                {
+                    "alertas": [],
+                    "cantidadRequerida": 1.00,
+                    "codigoMaterial": "H0000",
+                    "codigoMaterialFacturacion": "H",
+                    "codigosSnomed": [],
+                    "delegacionProductiva": "0098",
+                    "dependeResultado": false,
+                    "descripcionMaterial": "Hemograma completo",
+                    "esFacturable": false,
+                    "esPerfil": false,
+                    "esPrivado": false,
+                    "esTerceros": false,
+                    "estados": [
+                        {
+                            "codigoEstado": "VA",
+                            "fechaEstado": "2021-07-03"
+                        }
+                    ],
+                    "idItem": "2",
+                    "idParent": "1",
+                    "nifCliente": "A50004209",
+                    "tipoMuestra": "SV",
+                    "tipoPosicion": 0
+                },
+                {
+                    "alertas": [],
+                    "cantidadRequerida": 1.00,
+                    "codigoMaterial": "H0020",
+                    "codigoMaterialFacturacion": "VSG",
+                    "codigosSnomed": [],
+                    "delegacionProductiva": "0098",
+                    "dependeResultado": false,
+                    "descripcionMaterial": "VSG",
+                    "esFacturable": false,
+                    "esPerfil": false,
+                    "esPrivado": false,
+                    "esTerceros": false,
+                    "estados": [
+                        {
+                            "codigoEstado": "VA",
+                            "fechaEstado": "2021-07-07"
+                        }
+                    ],
+                    "idItem": "3",
+                    "idParent": "1",
+                    "nifCliente": "A50004209",
+                    "tipoMuestra": "SV",
+                    "tipoPosicion": 0
+                },
+                {
+                    "alertas": [],
+                    "cantidadRequerida": 1.00,
+                    "codigoMaterial": "B0000",
+                    "codigoMaterialFacturacion": "GLU",
+                    "codigosSnomed": [],
+                    "delegacionProductiva": "0098",
+                    "dependeResultado": false,
+                    "descripcionMaterial": "Glucosa suero",
+                    "esFacturable": true,
+                    "esPerfil": false,
+                    "esPrivado": false,
+                    "esTerceros": false,
+                    "estados": [],
+                    "idItem": "4",
+                    "idParent": "0",
+                    "nifCliente": "A50004209",
+                    "tipoMuestra": "SV",
+                    "tipoPosicion": 0
+               }
+            ],
+            "tipoPeticion": "1",
+            "usuarioTrak": "BRIUL"
+        }
+    ]
+}

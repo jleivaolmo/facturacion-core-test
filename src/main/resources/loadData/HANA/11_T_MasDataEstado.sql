@@ -1,0 +1,17 @@
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (01, 1,0, 'SE',1, 'Peticion sin estados', NOW(), 1, 0, NOW(), 'Sin estado', 1,1, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (02, 1,0, 'CR',1, 'La petición ha sido creada en el sistema origen y ha llegado a SCP.', NOW(), 1, 0, NOW(),'Creada / Sin Recibir', 1,1, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (03, 1,1, 'VA',2, 'Todas las pruebas de la petición han sido validadas.', NOW(), 1, 0, NOW(), 'Validada / Autorizada', 1,2, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (04, 1,1, 'FB',3, 'La petición cumple con todos los requisitos de facturación. Aplica cuando el cliente factura por fecha de petición o cuando todas las pruebas de una petición han sido validadas.', NOW(), 1, 0, NOW(), 'Facturable', 1,2, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (05, 1,1, 'EX',0, 'La petición contiene pruebas Incongruentes o no facturables indicado vía sistema integrador', NOW(), 1, 0, NOW(), 'Excluida', 1,4, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (06, 1,0, 'FN',2, 'La petición está en proceso de facturación.', NOW(), 1, 0, NOW(), 'Facturando', 1,1, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (07, 1,1, 'PC',2, 'Pedido Creado', NOW(), 1, 0, NOW(), 'Pedido creado', 1,9, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (08, 1,1, 'F',3, 'Todas las pruebas de la petición han sido facturadas.', NOW(), 1, 0, NOW(), 'Facturada', 1,6, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (09, 1,1, 'PF',2, 'Algunas pruebas de la petición han sido facturadas.', NOW(), 1, 0, NOW(), 'Parcialmente facturada', 1,7, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (10, 1,1, 'PA',2, 'Pedido Abono', NOW(), 1, 0, NOW(), 'Pedido abono', 1,8, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (11, 1,1, 'R',2, 'La petición ha sido rectificada.', NOW(), 1, 0, NOW(), 'Rectificada', 1,8, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (12, 1,0, 'BLK',1, 'Petición/Prueba bloqueada', NOW(), 1, 0, NOW(), 'Bloqueada', 1,3, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (13, 1,1, 'ERR',1, 'Prueba Errónea', NOW(), 1, 0, NOW(), 'Errónea', 1,5, NULL);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (14, 1,1, 'CO',3, 'Cobrada', NOW(), 1, 0, NOW(), 'Cobrada', 2,6, 08);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (15, 1,1, 'PCO',2, 'Parcialmente cobrada', NOW(), 1, 0, NOW(), 'Parcialmente cobrada',2,6, 08);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (16, 1,1, 'LIQ',3, 'Liquidada', NOW(), 1, 0, NOW(), 'Liquidada',2,6,08);
+INSERT INTO "FACTURACION"."T_MASDATAESTADO" VALUES (17, 1,1, 'AB',3, 'Abonada', NOW(), 1, 0, NOW(), 'Abonada', 2,6, 14);

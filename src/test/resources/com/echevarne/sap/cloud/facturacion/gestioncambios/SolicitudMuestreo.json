@@ -1,0 +1,75 @@
+{
+    "codigoOficinaVentas": "0001",
+    "numeroReferenciaCliente": "P120",
+    "numeroReferenciaExterno": "GLASO",
+    "codigoPeticion": "P1001",
+    "codigoUsuarioExterno": "GLASO",
+    "peticion": [
+        {
+        	"entityCreationTimestamp": 1571998444000,
+            "lastUpdatedTimestamp": 1571998444000,
+            "codigoPeticion": "P1001",
+            "cargoPeticion": "3235",
+            "categoriaPeticion": 1,
+            "codigoCliente": "10000",
+            "codigoDelegacion": "E001",
+            "codigoSector": "PR",
+            "codigoUsuarioExterno": "GLASO",
+            "esInmediato": 1,
+            "esMuestraRemitida": 1,
+            "esPrivado": 1,
+            "nifCliente": "A0000001",
+            "numeroReferenciaCliente": null,
+            "numeroReferenciaExterno": null,
+            "personaRemitente": null,
+            "tipoPeticion": 0,
+            "items": [
+                {
+                	"entityCreationTimestamp": 1571998444000,
+            		"lastUpdatedTimestamp": 1571998444000,
+                    "codigoPrueba": "MUE002",
+                    "cantidadRequerida": 1,
+                    "codigoCargo": "3232",
+                    "codigoCliente": "1000",
+                    "codigoLote": null,
+                    "codigoMaterial": "TG11",
+                    "codigoMaterialFacturacion": null,
+                    "delegacionProductiva": null,
+                    "descripcionMaterial": null,
+                    "descripcionMaterialFacturacion": null,
+                    "esFacturable": 0,
+                    "esInformada": 0,
+                    "esPerfil": 0,
+                    "esPrivado": 1,
+                    "esTerceros": 1,
+                    "nifCliente": null,
+                    "tipoMuestra": 2,
+                    "unidadMaterial": null,
+                    "precio": null,
+                    "alertas": [],
+                    "estados": [{
+                    	"codigoEstado": "FR"
+                    	
+                    },
+                    {
+                    	"codigoEstado": "HJ"
+                    	
+                    }
+                    ]
+                }
+            ],
+            "interlocutores": [],
+            "alertas": [],
+            "estados": [],
+            "fechas": null,
+            "precio": null,
+            "paciente": null,
+            "medico": null,
+            "pruebaVeterinaria": null,
+            "clinica": null,
+            "clinicos": null,
+            "industria": null
+        }]
+    ,
+    "estados": []
+}

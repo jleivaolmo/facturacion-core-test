@@ -1,0 +1,1 @@
+insert into Person (id,firstName, lastName, state, entity_creation_timestamp, last_updated_timestamp, entity_version) values (123, 'StevenSQL', 'MendezSQL', 'C', '2019-06-25T23:26:41.304Z', '2019-06-25T23:26:41.304Z', 1);

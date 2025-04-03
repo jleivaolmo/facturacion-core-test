@@ -1,0 +1,23 @@
+<dataset>
+	<T_PeticionMuestreo
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        fk_SolicitudMuestreo="1"
+        codigoPeticion="codigoPeticion"
+        cargoPeticion="cargoPeticion"
+        categoriaPeticion="1"
+        codigoCliente="codigoCliente"
+        codigoDelegacion="codigoDelegacion"
+        codigoSector="codigoSector"
+        esInmediato="1"
+        esMuestraRemitida="1"
+        esPrivado="1"
+        nifCliente="nifCliente"
+        codigoReferenciaCliente="numeroReferenciaCliente"
+        codigoReferenciaExterno="numeroReferenciaExterno"
+        personaRemitente="personaRemitente"
+        tipoPeticion="1"
+	/>
+</dataset>

@@ -1,0 +1,11 @@
+<dataset>
+	<IT_EntityFieldsName
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        nombreCampo="nombreCampo"   
+        tipoCampo="0"
+        fk_EntityName="1"
+	/>
+</dataset>

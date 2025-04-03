@@ -1,0 +1,46 @@
+<dataset>
+    <VT_MUESTRA_REMITIDA
+       muestraRemitida = "X"
+    />
+    <VT_ORGANIZACION_VENTAS
+            codigoOrganizacion = "*"
+    />
+    <VT_OFICINA_VENTAS
+            codigoOficina = "*"
+    />
+    <VT_CLIENTES
+            codigoCliente = "1"
+            nombreCliente = "test"
+    />
+    <V_REGLAFACT_ADD
+            id="1"
+            critically="0"
+            estado="Estado"
+    />
+    <T_ReglaFacturacion
+            id="1"
+            incluyeDelegacion="1"
+            incluyeRemitente="1"
+            incluyeCompania="1"
+            incluyeProvRemitente="1"
+            incluyeTipoPeticion="1"
+            incluyeMuestraRemitida="1"
+            incluyeTarifa="1"
+            incluyePrueba="1"
+            incluyeConcepto="1"
+            incluyeUnidadProductiva="1"
+            incluyeEspecialidadCliente="1"
+            incluyeOperacion="1"
+            incluyeReferenciaCliente="1"
+            incluyeDocumentoUnico="1"
+            incluyePoliza="1"
+            muestraRemitida="X"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            validez_desde = "2010-11-28 00:00:00"
+            validez_hasta = "2014-12-30 00:00:00"
+            codigoCliente = "1"
+            organizacionVentas = "*"
+    />
+</dataset>

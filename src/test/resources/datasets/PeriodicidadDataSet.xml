@@ -1,0 +1,26 @@
+<dataset>
+	<T_ParamPeriodicidad
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        nombre="Diaria"
+		numMinutos="1440"
+	/>
+	<T_ParamPeriodicidad
+		id="2"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+		entity_version="1"
+		last_updated_timestamp="2012-11-30 00:00:00"
+		nombre="Semanal"
+		numMinutos="10080"
+	/>
+	<T_ParamPeriodicidad
+		id="3"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+		entity_version="1"
+		last_updated_timestamp="2012-11-30 00:00:00"
+		nombre="Mensual"
+		numMinutos="43200"
+	/>
+</dataset>

@@ -1,0 +1,14 @@
+<dataset>
+	<T_PetMuesOperacion
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        fk_PeticionMuestreo="1"
+        codigoAutorizacion="codigoAutorizacion"
+		codigoBeneficiario="codigoBeneficiario"
+		codigoProceso="codigoProceso"
+		codigoOperacion="codigoOperacion"
+		codigoRegistro="codigoRegistro"
+	/>
+</dataset>

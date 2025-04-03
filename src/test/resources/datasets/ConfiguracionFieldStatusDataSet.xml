@@ -1,0 +1,12 @@
+<dataset>
+	<IT_ConfiguracionFieldStatus
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        configurationLevel="33"
+        allowChanges="true"
+        fk_entityFieldName="1"
+        fk_MasDataEstadosGrupo="1"
+	/>
+</dataset>

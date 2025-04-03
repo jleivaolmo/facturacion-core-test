@@ -1,0 +1,28 @@
+<dataset>
+	<V_UPDATE_PETCLIENTE
+		idTrazabilidad="1"
+		codigoCliente="c1"
+		codigoPeticion="p1"
+		idSI="1"
+		idSM="2"
+		idPM="3"
+		codigoDelegacion="d1"
+		organizacionVentas="o1"
+		fechaPeticion="2015-11-29 00:00:00"
+		fechaCreacion="2015-11-29 00:00:00"
+		codigoEstado="FB"
+	/>
+	<V_UPDATE_PETCLIENTE
+			idTrazabilidad="2"
+			codigoCliente="c1"
+			codigoPeticion="p2"
+			idSI="4"
+			idSM="5"
+			idPM="6"
+			codigoDelegacion="d2"
+			organizacionVentas="o1"
+			fechaPeticion="2012-11-29 00:00:00"
+			fechaCreacion="2012-11-29 00:00:00"
+			codigoEstado="F"
+	/>
+</dataset>

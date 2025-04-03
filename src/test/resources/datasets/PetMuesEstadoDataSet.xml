@@ -1,0 +1,12 @@
+<dataset>
+	<T_PetMuesEstado
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        fk_PeticionMuestreo="1"
+        codigoEstado="1"
+        codigoEstadoSec="1"
+        fechaEstado="2012-11-31 00:00:00"
+	/>
+</dataset>

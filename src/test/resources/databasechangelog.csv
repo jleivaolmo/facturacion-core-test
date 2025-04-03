@@ -1,0 +1,4 @@
+"ID","AUTHOR","FILENAME","DATEEXECUTED","ORDEREXECUTED","EXECTYPE","MD5SUM","DESCRIPTION","COMMENTS","TAG","LIQUIBASE","CONTEXTS","LABELS","DEPLOYMENT_ID"
+"1","Steven Mendez","liquibase/test-db-changelog-1.0.json","2019-06-11T19:43:30.815","2","EXECUTED","8:e7adba8330951bdc5a7efee326b44bbb","createTable tableName=person","","","3.6.3","()","","0303810792"
+"2","Steven Mendez","liquibase/test-db-changelog-1.0.json","2019-06-11T19:43:30.819","4","EXECUTED","8:e3f0f50eb245f66c68ec504db93b6717","addColumn tableName=person","","","3.6.3","()","","0303810792"
+"3","Steven Mendez","liquibase/test-db-changelog-1.0.json","2019-06-11T19:43:30.825","6","EXECUTED","8:12a8bb9e438047d9332c8aec4f90a76e","addLookupTable existingColumnName=state, existingTableName=person, newColumnName=id, newTableName=state",,"","3.6.3","()","","0303810792"

@@ -1,0 +1,22 @@
+<dataset>
+	<T_SolAgrItems
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        fk_SolicitudAgrupada="1"
+        salesOrderAgrItem="1"
+        SalesOrderItemCategory="SalesOrderItemCategory"
+        PurchaseOrderByCustomer="PurchaseOrderByCustomer"
+        Material="Material"
+		PricingDate="PricingDate"
+		RequestedQuantity="10.00"
+		listaPrecio="grupoPrecio"
+		grupoPrecio="grupoPrecio"
+		ProductionPlant="ProductionPlant"
+		referenceSDDocument="CustomerPaymentTerms"
+		referenceSDDocumentItem="ItemBillingBlockReason"
+		priceReferenceMaterial="WBSElement"
+		ProfitCenter="ProfitCenter"
+	/>
+</dataset>

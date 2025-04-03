@@ -1,0 +1,12 @@
+insert into T_MasDataTipoPosicion values(1,1,NOW(),1,0,0,NOW(),'Prueba','ZTAD',NULL,NULL);
+insert into T_MasDataTipoPosicion values(2,1,NOW(),1,0,0,NOW(),'Perfil','ZTAQ',NULL,NULL);
+insert into T_MasDataTipoPosicion values(3,1,NOW(),1,0,0,NOW(),'Prueba de perfil','ZTAE',NULL,NULL);
+insert into T_MasDataTipoPosicion values(4,1,NOW(),1,0,0,NOW(),'Terceros','ZTAS',NULL,NULL);
+insert into T_MasDataTipoPosicion values(5,1,NOW(),1,0,0,NOW(),'Producto NO LIMS','ZTAZ',NULL,NULL);
+insert into T_MasDataTipoPosicion values(6,1,NOW(),1,0,0,NOW(),'Servicio atípico','ZTAV',NULL,NULL);
+insert into T_MasDataTipoPosicion values(7,1,NOW(),1,0,0,NOW(),'Prueba a terceros','ZTER',NULL,NULL);
+insert into T_MasDataTipoPosicion values(8,1,NOW(),1,1,0,NOW(),'No facturable','ZTNF',NULL,NULL);
+insert into T_MasDataTipoPosicion values(9,1,NOW(),1,0,0,NOW(),'Posición sin cargo','ZTNN',NULL,NULL);
+insert into T_MasDataTipoPosicion values(10,1,NOW(),1,1,0,NOW(),'Prueba incongruente','ZTPI',NULL,NULL);
+insert into T_MasDataTipoPosicion values(11,1,NOW(),1,0,0,NOW(),'Prueba informada','ZPIN',NULL,NULL);
+insert into T_MasDataTipoPosicion values(12,1,NOW(),1,0,0,NOW(),'Pos. Alquiler','ZALQ',NULL,NULL);

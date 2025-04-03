@@ -1,0 +1,11 @@
+<dataset>
+	<T_MasDataTipoPeticion
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        nombreTipoPeticion="nombreTipoPeticion"
+        active="1"
+        tipoPeticion="1"
+	/>
+</dataset>

@@ -1,0 +1,12 @@
+<dataset>
+	<T_SolAgrTexts
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        fk_SolicitudAgrupada="1"
+        Language="Language"
+        LongTextID="LongTextoID"
+        LongTexto="LongTexto"
+	/>
+</dataset>

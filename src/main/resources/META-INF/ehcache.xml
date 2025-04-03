@@ -1,0 +1,40 @@
+<ehcache:config xmlns="http://www.ehcache.org/v3"
+	xmlns:ehcache="http://www.ehcache.org/v3"
+	xmlns:jcache="http://www.ehcache.org/v3/jsr107">
+
+	<service>
+		<jcache:defaults enable-management="true"
+			enable-statistics="true" default-template="hibernate-default-template"/>
+	</service>
+
+	<cache-template name="hibernate-default-template">
+	    <expiry>
+	        <ttl unit="seconds">1800</ttl>
+	    </expiry>
+	    <heap unit="entries">1000</heap>
+	</cache-template>
+
+	<cache alias="default-query-results-region">
+		<expiry>
+			<ttl unit="seconds">900</ttl>
+		</expiry>
+		<heap unit="entries">1000</heap>
+	</cache>
+
+	<cache alias="default-update-timestamps-region">
+		<expiry>
+			<none />
+		</expiry>
+		<heap unit="entries">10000</heap>
+	</cache>
+	
+    <!-- Cache Region for Read-Only Entities -->
+    <cache alias="read-only-region">
+        <!-- Specify a 'forever' TTL by using a large value -->
+        <expiry>
+            <ttl unit="seconds">31536000</ttl> <!-- 1 year -->
+        </expiry>
+        <heap unit="entries">3000</heap>
+    </cache>	
+
+</ehcache:config>

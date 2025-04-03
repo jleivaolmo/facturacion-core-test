@@ -1,0 +1,15 @@
+<dataset>
+	<T_Trazabilidad
+	    id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        accountingDocument="accountingDocument"
+        salesOrder="salesOrder"
+        salesOrderItem="salesOrderItem"
+        billingDocument="billingDocument"
+        billingDocumentItem="billingDocumentItem"
+        fk_PeticionMuestreoItems="1"
+        splitterKey="splitterKey"
+	/>
+</dataset>

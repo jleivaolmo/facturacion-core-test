@@ -1,0 +1,12 @@
+<dataset>
+	<T_MasDataEstado
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        codeEstado="1"
+        nombre="nombreEstado"
+        FK_GrupoEstado="1"
+        active="1"
+	/>
+</dataset>

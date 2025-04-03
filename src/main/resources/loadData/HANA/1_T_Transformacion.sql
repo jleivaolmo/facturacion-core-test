@@ -1,0 +1,19 @@
+--
+-- Solicitud Individual
+--
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (1,NOW(),1,'sm','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.SolicitudMuestreo',0,NOW(),'SolicitudMuestreo-SolicitudIndividual','si','com.echevarne.sap.cloud.facturacion.model.solicitudindividual.SolicitudIndividual', 'Generic', 'Generic');
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (2,NOW(),1,'sm_items','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PeticionMuestreoItems',0,NOW(),'PeticionMuestreoItems-SolIndItems','si_items','com.echevarne.sap.cloud.facturacion.model.solicitudindividual.SolIndItems', 'Generic', 'Generic');
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (3,NOW(),1,'sm_interlocutor','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PetMuesInterlocutores',0,NOW(),'PetMuesInterlocutores-SolIndPartner','si_partner','com.echevarne.sap.cloud.facturacion.model.solicitudindividual.SolIndPartner', 'Generic', 'Generic');
+
+--
+-- Business Partners
+--
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (4,NOW(),1,'ic','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PetMuesInterlocutores',0,NOW(),'PetMuesInterlocutores-BusinessPartner','bp','com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartner', 'Generic', 'Generic');
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (5,NOW(),1,'ic','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PetMuesInterlocutores',0,NOW(),'PetMuesInterlocutores-BusinessPartnerAddress','bpa','com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartnerAddress', 'Generic', 'Generic');
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (6,NOW(),1,'ic','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PetMuesInterlocutores',0,NOW(),'PetMuesInterlocutores-BusinessPartnerTax','bpt','com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartnerTaxNumber', 'Generic', 'Generic');
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (7,NOW(),1,'ic','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PetMuesInterlocutores',0,NOW(),'PetMuesInterlocutores-BusinessPartnerRole','bpr','com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BusinessPartnerRole', 'Generic', 'Generic');
+
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (8,NOW(),1,'ic','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PetMuesInterlocutores',0,NOW(),'PetMuesInterlocutores-BuPaIdentification','bpi','com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.BuPaIdentification', 'Generic', 'Generic');
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (9,NOW(),1,'ic','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PetMuesInterlocutores',0,NOW(),'PetMuesInterlocutores-AddressEmailAddress','bae','com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.AddressEmailAddress', 'Generic', 'Generic');
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (10,NOW(),1,'ic','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PetMuesInterlocutores',0,NOW(),'PetMuesInterlocutores-AddressMobileNumber','bam','com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.AddressPhoneNumber', 'Generic', 'Generic');
+INSERT INTO "FACTURACION"."T_TRANSFORMACION" VALUES (11,NOW(),1,'ic','com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PetMuesInterlocutores',0,NOW(),'PetMuesInterlocutores-AddressPhoneNumber','bap','com.sap.cloud.sdk.s4hana.datamodel.odata.namespaces.businesspartner.AddressPhoneNumber', 'Generic', 'Generic');

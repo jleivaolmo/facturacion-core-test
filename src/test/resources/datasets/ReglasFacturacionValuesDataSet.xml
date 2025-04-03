@@ -1,0 +1,189 @@
+<dataset>
+    <VT_OFICINA_VENTAS
+            codigoOficina = "bcn"
+    />
+    <VT_REGIONES
+      codigoRegion="bcn"
+    />
+    <VT_UNIDADES_PRODUCTIVAS
+        codigo="u1"
+    />
+    <VT_TIPO_PETICION
+        tipoPeticion = "1"
+        nombreTipoPeticion = "test"
+    />
+    <VT_SECTOR_PRUEBA
+            codigoSector = "org1"
+    />
+    <VT_EMPRESAS
+        codigoEmpresa = "1"
+        nombreEmpresa = "customer"
+    />
+    <VT_COMPANIAS
+        codigoCompania = "1"
+    />
+    <VT_REMITENTES
+            codigoRemitente = "1"
+    />
+    <VT_MATERIAL_VENTAS
+        codigoMaterial = "m1"
+    />
+    <VT_CONCEPTOS_FACT
+            codigoMaterial = "m2"
+    />
+    <T_RegFactDelegacion
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            codigoDelegacion = "bcn"
+    />
+    <T_RegFactTipoPeticion
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            tipoPeticion = "1"
+    />
+    <T_RegFactSector
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            sectorVentas = "org1"
+    />
+    <T_RegFactEmpresas
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            interlocutorEmpresa = "1"
+    />
+    <T_RegFactCompanias
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            interlocutorCompania = "1"
+    />
+    <T_RegFactRemitentes
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            interlocutorRemitente = "1"
+    />
+    <T_RegFactUnidadProd
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            unidadProductiva = "u1"
+    />
+    <T_RegFactServicioConc
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            servicioConcertado = "servicio1"
+    />
+    <T_RegFactDocumentoUnico
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            documentoUnico = "docunico"
+    />
+    <T_RegFactProvRemitente
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            provinciaRemitente = "bcn"
+    />
+    <T_RegFactPolizas
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            codigoPoliza = "100"
+    />
+    <T_RegFactOperacion
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            codigoOperacion = "op1"
+    />
+    <T_RegFactPrueba
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            codigoPrueba = "m1"
+    />
+    <T_RegFactConceptoFact
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            conceptoFacturacion="m2"
+    />
+    <T_RegFactReferencia
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            codigoReferenciaCliente = "c1"
+    />
+    <T_RegFactEspecialidadCliente
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            especialidadCliente = "*"
+    />
+    <T_ConfiguracionReglas
+            id="1"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            nombreSet = "codigoPoliza"
+            porExclusion = "false"
+    />
+    <T_ConfiguracionReglas
+            id="2"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            nombreSet = "codigoDelegacion"
+            porExclusion = "true"
+    />
+    <T_ConfiguracionReglas
+            id="3"
+            entity_creation_timestamp="2012-11-29 00:00:00"
+            entity_version="1"
+            last_updated_timestamp="2012-11-30 00:00:00"
+            fk_ReglaFacturacion = "1"
+            nombreSet = "tipoPeticion"
+            porExclusion = "false"
+    />
+</dataset>

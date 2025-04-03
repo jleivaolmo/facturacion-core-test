@@ -1,0 +1,19 @@
+<dataset>
+	<T_ProcesoActualizacion
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+		fecha_inicio="2021-11-15 00:00:00"
+		hora_inicio="18:45:20"
+		fecha_fin="2021-11-25 00:00:00"
+		idPeriodicidad="1"
+		ejecucionInmediata="false"
+		paramCodigoCliente="000045224"
+		paramOrganizacionVentas="ECHE"
+		paramOficinaVentas="005"
+		paramFechaPeticionDesde="2021-10-25 00:00:00"
+		paramFechaPeticionHasta="2022-10-25 00:00:00"
+		nombre="Test 1"
+	/>
+</dataset>

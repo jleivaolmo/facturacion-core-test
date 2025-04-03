@@ -1,0 +1,150 @@
+{
+    "codigoOficinaVentas": "Prueba-3",
+    "numeroReferenciaCliente": "Value for numeroReferenciaCliente",
+    "numeroReferenciaExterno": "Value for numeroReferenciaExterno",
+    "codigoUsuarioExterno": "ABC-1234x",
+    "interfaz": "ATLAS",
+    "topeticion": {
+        "codigoPeticion": "P3001",
+        "cargoPeticion": "Value for cargoPeticion",
+        "categoriaPeticion": 0,
+        "codigoCliente": "Value for codigoCliente",
+        "codigoDelegacion": "0106",
+        "codigoSector": "Value for codigoSector",
+        "codigoUsuarioExterno": "Value for codigoUsuarioExterno",
+        "esInmediato": 0,
+        "esMuestraRemitida": 0,
+        "esPrivado": false,
+        "nifCliente": "Value for nifCliente P1003-33",
+        "numeroReferenciaCliente": "Value for numeroReferenciaCliente",
+        "numeroReferenciaExterno": "Value for numeroReferenciaExterno",
+        "personaRemitente": "Value for personaRemitente",
+        "tipoPeticion": 0,
+        "items": [
+            {
+                "codigoPrueba": "Value for codigoPrueba",
+                "cantidadRequerida": 21,
+                "codigoCargo": "Value for codigoCargo",
+                "codigoCliente": "Value for codigoCliente",
+                "codigoLote": "Value for codigoLotew",
+                "codigoMaterial": "Value for codigoMaterialwww",
+                "codigoMaterialFacturacion": "Value for codigoMaterialFacturacion",
+                "delegacionProductiva": "Value for delegacionProductiva",
+                "descripcionMaterial": "Value for descripcionMaterial",
+                "descripcionMaterialFacturacion": "Value for descripcionMaterialFacturacion",
+                "esFacturable": false,
+                "esInformada": false,
+                "esPerfil": false,
+                "esPrivado": false,
+                "esTerceros": false,
+                "nifCliente": "Value for nifCliente",
+                "tipoMuestra": 0,
+                "unidadMaterial": "Value for unidadMaterial new",
+                "precio": {
+                    "codigoDivisa": "Value for codigoDivisa",
+                    "precioBase": 0,
+                    "precioUnitario": 0
+                },
+                "alertas": [
+                    {
+                        "codigoAlerta": "Value for codigoAlerta",
+                        "textoAlerta": "Value for textoAlertas"
+                    }
+                ],
+                "estados": [
+                    {
+                        "codigoEstado": "Value for codigoEstado",
+                        "codigoEstadoSec": 0,
+                        "fechaEstado": 1572745039037
+                    }
+                ]
+            }
+        ],
+        "interlocutores": [
+            {
+                "codigoInterlocutor": "Value for codigoInterlocutor",
+                "nifInterlocutor": "Value for nifInterlocutor",
+                "rolInterlocutor": "Value for rolInterlocutor"
+            },
+            {
+                "codigoInterlocutor": "Value for codigoInterlocutor 2",
+                "nifInterlocutor": "Value for nifInterlocutor 2",
+                "rolInterlocutor": "Value for rolInterlocutor 2"
+            }
+        ],
+        "alertas": [
+            {
+                "codigoAlerta": "Value for codigoAlerta",
+                "textoAlerta": "Value for textoAlerta"
+            }
+        ],
+        "estados": [
+            {
+                "codigoEstado": 0,
+                "codigoEstadoSec": 10,
+                "fechaEstado": 1572745039036
+            }
+        ],
+        "fechas": {
+            "fechaDerivacion": 1572745039031,
+            "fechaOperacion": 1572745039031,
+            "fechaPeticion": 1572745039031,
+            "fechaPrescripcion": 1572745039031,
+            "fechaRecepcion": 1572745039031,
+            "fechaToma": 1572215039031,
+            "horaOperacion": 1572745039031
+        },
+        "precio": {
+            "codigoDivisa": "Value for codigoDivisa1",
+            "precioBase": 0,
+            "precioUnitario": 0
+        },
+        "paciente": {
+            "numeroPaciente": "Value for numeroPaciente",
+            "tipoDocumento": "Value for tipoDocumento1",
+            "codigoPoliza": "Value for codigoPoliza",
+            "cuentaCotizacion": "Value for cuentaCotizacion",
+            "nombreCuentaCotizacion": "Value for nombreCuentaCotizacion",
+            "numeroContrato": "Value for numeroContrato",
+            "puestoTrabajo": "Value for puestoTrabajo",
+            "numeroEmpleado": "Value for numeroEmpleado",
+            "codigoColectivo": "Value for codigoColectivo"
+        },
+        "medico": {
+            "codigoMedico": "Value for codigoMedico",
+            "tipoMedico": "Value for tipoMedico",
+            "especialidadMedico": "Value for especialidadMedico"
+        },
+        "pruebaVeterinaria": {
+            "nombreAnimal": "Value for nombreAnimal",
+            "nombrePropietario": "Value for nombrePropietario"
+        },
+        "clinica": {
+            "entidadPrescriptora": "Value for entidadPrescriptora",
+            "codigoOficina": "Value for codigoOficina11111"
+        },
+        "clinicos": {
+            "codigoVisita": "Value for codigoVisita",
+            "codigoEstudio": "Value for codigoEstudio1111111",
+            "codigoSeleccion": "Value for codigoSeleccion",
+            "codigoLote": "Value for codigoLote",
+            "codigoHistoriaClinica": "Value for codigoHistoriaClinica",
+            "codigoTratamiento": "Value for codigoTratamiento",
+            "codigoHabitacion": "Value for codigoHabitacion",
+            "codigoCama": "Value for codigoCama",
+            "codigoServicio": "Value for codigoServicio",
+            "codigoLugarMuestreo": "Value for codigoLugarMuestreo"
+        },
+        "industria": {
+            "codigoDescripcion": "Value for codigoDescripcion111111",
+            "operarioMuestreado": "Value for operarioMuestreado"
+        }
+    },
+    "estados": [
+        {
+            "codigoEstado": 0,
+            "codigoEstadoSec": 1111110,
+            "fechaEstado": 1572745039030
+        }
+    ]
+}

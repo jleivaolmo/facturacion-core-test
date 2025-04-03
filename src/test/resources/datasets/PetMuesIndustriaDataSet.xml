@@ -1,0 +1,11 @@
+<dataset>
+	<T_PetMuesIndustria
+        id="1"
+		entity_creation_timestamp="2012-11-29 00:00:00"
+        entity_version="1"
+        last_updated_timestamp="2012-11-30 00:00:00"
+        fk_PeticionMuestreo="1"
+        codigoDescripcion="codigoDescripcion"
+        operarioMuestreado="operarioMuestreado"
+	/>
+</dataset>
