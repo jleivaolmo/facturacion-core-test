@@ -128,8 +128,82 @@ public class ODataFilterUtils {
 
 	}
 
-	
-	
+	public static UriInfoImpl convertFilterValuesToInternal(GetEntitySetUriInfo uriParserResultView) {
+		try {
+			UriInfoImpl uriInfo = (UriInfoImpl) uriParserResultView;
+			FilterExpression filter = uriInfo.getFilter();
+			Map<String, String> customQueryOptions = uriInfo.getCustomQueryOptions();
+			String search = customQueryOptions == null ? null : customQueryOptions.get(SEARCH);
+			if (filter == null && search == null) {
+				return uriInfo;
+			}
+			if (filter == null) {
+				filter = new FilterExpressionImpl("");
+			}
+			StringBuilder filterString = new StringBuilder();
+			FilterExpressionImpl customizedFilter = getCustomizedFilter(filter, uriInfo.getTargetType());
+			String customizedExp = customizedFilter.getExpressionString();
+			if (!StringUtils.isNullOrEmpty(customizedExp) && !StringUtils.isNullOrEmpty(search)) {
+				filterString.append("(");
+			}
+			filterString.append(customizedExp);
+			if (!StringUtils.isNullOrEmpty(customizedExp) && !StringUtils.isNullOrEmpty(search)) {
+				filterString.append(")");
+			}
+			if (!StringUtils.isNullOrEmpty(search)) {
+				appendSearchField(uriInfo, filterString, search);
+			}
+			SQLFilterParser filterParser = new SQLFilterParser((EdmEntityType) uriInfo.getTargetType());
+			FilterExpressionImpl newFilter = (FilterExpressionImpl) filterParser.parseFilterString(filterString.toString());
+			uriInfo.setFilter(newFilter);
+			return uriInfo;
+		} catch (Exception e) {
+			log.error("Ops!", e);
+		}
+		return (UriInfoImpl) uriParserResultView;
+	}
+
+	private static FilterExpressionImpl getCustomizedFilter(FilterExpression filter, EdmType type)
+			throws ExpressionParserException, ExpressionParserInternalError, EdmException {
+		String lastCustomizedField = "";
+		var stringFilter = filter.getExpressionString();
+		var arrayFilter = stringFilter.split(" ");
+		var filterSize = arrayFilter.length;
+		var customizedFilter = "";
+		for (int i = 0; i < filterSize; i++) {
+			var filterElement = arrayFilter[i];
+			if (filterElement.endsWith("Fiori")) {
+				String customizedElement = ConversionUtils.getFioriCustomizedField(filterElement);
+				customizedFilter += customizedElement;
+				lastCustomizedField = customizedElement;
+			} else if (filterElement.endsWith("tipoPeticion") && !EXCLUDED_ENTITIES.contains(type.getName())) {
+				customizedFilter += filterElement;
+				lastCustomizedField = filterElement;
+			} else if (lastCustomizedField.endsWith("tipoPeticion") && !ConversionUtils.isOperator(filterElement)) {
+				String customizedValue = filterElement + "d";
+				int idClose = customizedValue.indexOf(")");
+				if (idClose >= 0) {
+					customizedValue = customizedValue.replace(")", "");
+					customizedValue += ")";
+				}
+				customizedFilter += customizedValue;
+				lastCustomizedField = "";
+			} else if (!Objects.equals(lastCustomizedField, "") && !ConversionUtils.isOperator(filterElement)) {
+				Object objValue = ConversionUtils.getFioriCustomizedValue(filterElement);
+				String customizedValue = String.valueOf(objValue);
+				customizedFilter += customizedValue;
+				lastCustomizedField = "";
+			} else {
+				customizedFilter += filterElement;
+			}
+			if (i < filterSize - 1) {
+				customizedFilter += " ";
+			}
+		}
+		SQLFilterParser filterParser = new SQLFilterParser((EdmEntityType) type);
+		FilterExpressionImpl newFilter = (FilterExpressionImpl) filterParser.parseFilterString(customizedFilter.toString());
+		return newFilter;
+	}
 
 	private static void appendSearchField(UriInfoImpl uriInfo, StringBuilder filterString, String search)
 			throws EdmException {

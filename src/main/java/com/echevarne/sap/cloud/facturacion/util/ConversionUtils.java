@@ -8,7 +8,8 @@ import java.util.stream.Stream;
 
 import org.apache.olingo.odata2.core.uri.expression.FilterExpressionImpl;
 
-
+import com.echevarne.sap.cloud.facturacion.model.texts.EstadoText;
+import com.echevarne.sap.cloud.facturacion.model.texts.TipoDescuentoText;
 
 public class ConversionUtils {
 
@@ -86,7 +87,12 @@ public class ConversionUtils {
 		  { "tipoFiori", "porcentual" }, 
 		}).collect(Collectors.toMap(data -> data[0], data -> data[1]));
 	
-	
+	public static final Map<Object, Object> fioriValueMap = Stream.of(new Object[][] {
+		  { EstadoText.ESTADO_ACTIVO, true }, 
+		  { EstadoText.ESTADO_INACTIVO, false },
+		  {TipoDescuentoText.TIPO_PORCENTUAL, true },
+		  {TipoDescuentoText.TIPO_FIJO, false }
+		}).collect(Collectors.toMap(data -> data[0], data -> data[1]));
 	
 	public static final List<String> operators = Arrays.asList("eq","gt","lt","ne");
 	
@@ -289,6 +295,9 @@ public class ConversionUtils {
 		return operators.contains(value);
 	}
 
-	
+	public static Object getFioriCustomizedValue(String fioriValue) {
+		String keyValue = fioriValue.replace("'", "");
+		return fioriValueMap.get(keyValue);
+	}
 
 }

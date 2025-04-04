@@ -17,8 +17,10 @@ import com.echevarne.sap.cloud.facturacion.exception.EntityType;
 import com.echevarne.sap.cloud.facturacion.exception.ExceptionType;
 import com.echevarne.sap.cloud.facturacion.model.BasicMessagesEntity;
 import com.echevarne.sap.cloud.facturacion.model.Messages;
+import com.echevarne.sap.cloud.facturacion.model.facturacion.LogFacturacion;
 import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataMessagesGrupo;
-
+import com.echevarne.sap.cloud.facturacion.model.trazabilidad.TrazabilidadSolicitudMessages;
+import com.echevarne.sap.cloud.facturacion.services.MasDataMessagesGrupoService;
 import com.echevarne.sap.cloud.facturacion.services.MessagesService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +39,7 @@ public class MessagesUtils<T> {
 
 	public static MessagesService messagesSrv;
 
-	
+	public static MasDataMessagesGrupoService masDataMessagesGrupoServicio;
 
 	private static final AtomicBoolean testMode = new AtomicBoolean(false);
 
@@ -49,7 +51,11 @@ public class MessagesUtils<T> {
 		this.messagesSrv = messagesService;
 	}
 
-	
+	@SuppressWarnings("static-access")
+	@Autowired
+	public final void setMasDataMessagesGrupoService(MasDataMessagesGrupoService masDataMessagesGrupoSrv) {
+		this.masDataMessagesGrupoServicio = masDataMessagesGrupoSrv;
+	}
 
 	public static void setTestMode(boolean testM) {
 		testMode.set(testM);
@@ -77,7 +83,40 @@ public class MessagesUtils<T> {
 		return (T) new BasicMessagesEntity();
 	}
 
-	
+	public static <T extends BasicMessagesEntity> void addMessage(Set<T> messages, String messageCode, String variable1,
+			String variable2, String variable3, String variable4, String messageType) {
+		if (messageCode == null) {
+			log.warn("Null messageCode! Message won't be added.");
+			if(log.isDebugEnabled()){
+				Thread.dumpStack();
+			}
+
+			return;
+		}
+		Optional<Messages> message = messagesSrv.getMessageByErrorCode(messageCode, ConstFacturacion.IDIOMA_DEFAULT);
+		if (message.isPresent()) {
+			BasicMessagesEntity msg;
+			try {
+				msg = createEntity(messages);
+				msg.setType(messageType);
+				msg.setMessages(message.get());
+				if (message.get().getMsgKey().equals(MSGDEFAULT))
+					msg.setVar1(messageCode);
+				else
+					msg.setVar1(variable1);
+				msg.setVar2(variable2);
+				msg.setVar3(variable3);
+				msg.setVar4(variable4);
+				msg.setSequenceOrder(getOrder(messages));
+				Optional<MasDataMessagesGrupo> grupo = masDataMessagesGrupoServicio.findByCodeGrupo(messageCode.substring(0, 2));
+				grupo.ifPresent(msg::setGrupo);
+
+				messages.add((T) msg);
+			} catch (InstantiationException | IllegalAccessException e) {
+				log.error("Ops!", e);
+			}
+		}
+	}
 
 	/**
 	 *
@@ -88,8 +127,74 @@ public class MessagesUtils<T> {
 		return maxValue.isPresent() ? maxValue.get().getSequenceOrder() + 1 : 1;
 	}
 
-	
+	public static <T extends BasicMessagesEntity> void addMessage(Set<T> messages, String messageCode,
+			String messageType) {
+		addMessage(messages, messageCode, null, null, null, null, messageType);
+	}
 
+	public static <T extends BasicMessagesEntity> void addError(Set<T> messages, String messageCode) {
+		addMessage(messages, messageCode, null, null, null, null, TYPE_ERROR);
+	}
+
+	public static <T extends BasicMessagesEntity> void addAbort(Set<T> messages, String messageCode) {
+		addMessage(messages, messageCode, null, null, null, null, TYPE_ABORT);
+	}
+
+	public static <T extends BasicMessagesEntity> void addSuccess(Set<T> messages, String messageCode) {
+		addMessage(messages, messageCode, null, null, null, null, TYPE_SUCCESS);
+	}
+
+	public static <T extends BasicMessagesEntity> void addInformation(Set<T> messages, String messageCode) {
+		addMessage(messages, messageCode, null, null, null, null, TYPE_INFORMATION);
+	}
+
+	public static <T extends BasicMessagesEntity> void addWarning(Set<T> messages, String messageCode) {
+		addMessage(messages, messageCode, null, null, null, null, TYPE_WARNING);
+	}
+
+	public static <T extends BasicMessagesEntity> void addInformation(Set<T> messages, String messageCode,
+			String variable1, String variable2, String variable3, String variable4) {
+		addMessage(messages, messageCode, variable1, variable2, variable3, variable4, TYPE_INFORMATION);
+	}
+
+	public static <T extends BasicMessagesEntity> void addAbort(Set<T> messages, String messageCode, String variable1,
+			String variable2, String variable3, String variable4) {
+		addMessage(messages, messageCode, variable1, variable2, variable3, variable4, TYPE_ABORT);
+	}
+
+	public static <T extends BasicMessagesEntity> void addError(Set<T> messages, String messageCode, String variable1,
+			String variable2, String variable3, String variable4) {
+		addMessage(messages, messageCode, variable1, variable2, variable3, variable4, TYPE_ERROR);
+	}
+
+	public static <T extends BasicMessagesEntity> void addSuccess(Set<T> messages, String messageCode, String variable1,
+			String variable2, String variable3, String variable4) {
+		addMessage(messages, messageCode, variable1, variable2, variable3, variable4, TYPE_SUCCESS);
+	}
+
+	public static <T extends BasicMessagesEntity> void addWarning(Set<T> messages, String messageCode, String variable1,
+			String variable2, String variable3, String variable4) {
+		addMessage(messages, messageCode, variable1, variable2, variable3, variable4, TYPE_WARNING);
+	}
+
+	public static <T extends BasicMessagesEntity> void addException(Set<T> messages, String messageCode, Exception ex) {
+		addMessage(messages, messageCode, messageFromException(ex), null, null, null, TYPE_ERROR);
+	}
+
+	public static <T extends BasicMessagesEntity> void addException(Set<T> messages, String messageCode, Exception ex,
+			String variable1, String variable2, String variable3) {
+		addMessage(messages, messageCode, variable1, variable2, variable3, messageFromException(ex), TYPE_ERROR);
+	}
+
+	public static <T extends BasicMessagesEntity> void addException(Set<T> messages, String messageCode, Exception ex,
+			String variable1, String variable2) {
+		addMessage(messages, messageCode, variable1, variable2, messageFromException(ex), null, TYPE_ERROR);
+	}
+
+	public static <T extends BasicMessagesEntity> void addException(Set<T> messages, String messageCode, Exception ex,
+			String variable1) {
+		addMessage(messages, messageCode, variable1, messageFromException(ex), null, null, TYPE_ERROR);
+	}
 
 	public static <T extends BasicMessagesEntity> void changeMessage(Set<T> messages, String messageCode,
 			String variable1, String variable2, String variable3, String variable4) {
@@ -139,8 +244,36 @@ public class MessagesUtils<T> {
 		return messageBuilder.toString();
 	}
 
-	
+	public static <T extends BasicMessagesEntity> Set<TrazabilidadSolicitudMessages> mapMessagesToTrazSolMessages(Set<T> messages) {
+		Set<TrazabilidadSolicitudMessages> trzMessages = new HashSet<>();
+		messages.forEach(msg -> {
+			TrazabilidadSolicitudMessages trzMessage = new TrazabilidadSolicitudMessages();
+			trzMessage.setType(msg.getType());
+			trzMessage.setVar1(msg.getVar1());
+			trzMessage.setVar2(msg.getVar2());
+			trzMessage.setVar3(msg.getVar3());
+			trzMessage.setVar4(msg.getVar4());
+			trzMessage.setSequenceOrder(msg.getSequenceOrder());
+			trzMessage.setMessages(msg.getMessages());
+			trzMessages.add(trzMessage);
+		});
+		return trzMessages;
+	}
 
-	
+	public static <T extends BasicMessagesEntity> Set<LogFacturacion> mapMessagesToLogFacturacion(Set<T> messages) {
+		Set<LogFacturacion> logFacturacion = new HashSet<LogFacturacion>();
+		messages.forEach(msg -> {
+			LogFacturacion logMessage = new LogFacturacion();
+			logMessage.setType(msg.getType());
+			logMessage.setVar1(msg.getVar1());
+			logMessage.setVar2(msg.getVar2());
+			logMessage.setVar3(msg.getVar3());
+			logMessage.setVar4(msg.getVar4());
+			logMessage.setSequenceOrder(msg.getSequenceOrder());
+			logMessage.setMessages(msg.getMessages());
+			logFacturacion.add(logMessage);
+		});
+		return logFacturacion;
+	}
 
 }
