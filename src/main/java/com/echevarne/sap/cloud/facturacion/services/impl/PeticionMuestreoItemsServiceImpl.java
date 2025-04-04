@@ -27,6 +27,9 @@ public class PeticionMuestreoItemsServiceImpl extends CrudServiceImpl<PeticionMu
         this.peticionMuestreoItemsRep = peticionMuestreoItemsRep;
     }
 
-    
+    @Override
+    public List<PeticionMuestreoItems> findPruebasMixtasPorEstadoYFecha(@Param("from") Timestamp from, @Param("estado") MasDataEstado estado) {
+        return peticionMuestreoItemsRep.findPruebasMixtasPorEstadoYFecha(from,estado);
+    }
 
 }

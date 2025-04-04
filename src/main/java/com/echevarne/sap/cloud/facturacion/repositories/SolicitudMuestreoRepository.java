@@ -38,5 +38,7 @@ public interface SolicitudMuestreoRepository extends JpaRepository<SolicitudMues
 
 	@Query("FROM SolicitudMuestreo sm WHERE sm.esMixta=true and sm.entityCreationTimestamp<=:from")
     List<SolicitudMuestreo> findSolicitudesMixtasFromDate(@Param("from") Timestamp from);
-
+	
+	@Query("FROM SolicitudMuestreo sm JOIN sm.peticion pm JOIN pm.fechas dt WHERE dt.fechaPeticion =:fecha")
+    List<SolicitudMuestreo> findSolicitudesMuestreoFecha(@Param("fecha") Date fecha);
 }

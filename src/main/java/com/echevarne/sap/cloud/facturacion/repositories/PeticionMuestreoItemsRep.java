@@ -27,5 +27,9 @@ public interface PeticionMuestreoItemsRep extends JpaRepository<PeticionMuestreo
 
 	PeticionMuestreoItems findByCodigoPrueba(String codigoPrueba);
 
-	
+	@Query("FROM PeticionMuestreoItems pmi INNER JOIN pmi.peticion pm INNER JOIN pm.solicitud sm INNER JOIN Trazabilidad t ON t.itemRec=pmi " +
+			"INNER JOIN TrazabilidadEstHistory tzh ON tzh.trazabilidad=t AND tzh.inactive=false AND tzh.estado=:estado  " +
+			"WHERE sm.esMixta=true and pm.esPrivado=false and pm.fechas.fechaPeticion<=:from")
+	List<PeticionMuestreoItems> findPruebasMixtasPorEstadoYFecha(@Param("from") Timestamp from, @Param("estado") MasDataEstado estado);
+
 }

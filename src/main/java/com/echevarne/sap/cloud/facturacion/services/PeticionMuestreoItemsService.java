@@ -19,6 +19,6 @@ import com.echevarne.sap.cloud.facturacion.model.solicitudrecibida.PeticionMuest
  */
 public interface PeticionMuestreoItemsService extends CrudService<PeticionMuestreoItems, Long> {
 
-
+    List<PeticionMuestreoItems> findPruebasMixtasPorEstadoYFecha(Timestamp from, MasDataEstado estado);
 
 }

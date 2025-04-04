@@ -29,6 +29,8 @@ public interface SolicitudMuestreoService extends CrudService<SolicitudMuestreo,
 
 	List<SolicitudMuestreo> findSolicitudesMixtasFromDate(Timestamp from);
 
-
-
+	Set<PeticionMuestreo> desbloqueaPruebasMutuaPeticionesMixtas(int numDaysBlock);
+	
+	List<SolicitudMuestreo> findSolicitudesMuestreoFecha(Date from);
+	
 }
