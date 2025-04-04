@@ -254,13 +254,6 @@
 			</exclusions>
 		</dependency>
 
-		<!-- HANA Database Connector JDBC -->
-		<dependency>
-			<groupId>com.sap.cloud.db.jdbc</groupId>
-			<artifactId>ngdbc</artifactId>
-			<version>2.12.9</version>
-		</dependency>
-
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-hibernate5</artifactId>
