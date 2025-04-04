@@ -8,10 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 
@@ -25,8 +24,6 @@ import org.hibernate.annotations.LazyToOneOption;
  * @since 06/24/2019
  */
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "T_GestionCambioData")
 @SapEntitySet(creatable = false, updatable = false, searchable = true, deletable = false)
 public class GestionCambioData extends BasicEntity {

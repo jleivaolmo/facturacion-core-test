@@ -1,14 +1,10 @@
 package com.echevarne.sap.cloud.facturacion.model.parametrizacion;
 
 import com.echevarne.sap.cloud.facturacion.mappers.EntityIdResolver;
-import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataEstado;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -20,8 +16,6 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @SapEntitySet(creatable = true, updatable = true, searchable = true, deletable = true)
-@AllArgsConstructor
-@NoArgsConstructor
 @JsonIdentityInfo(
         generator = ObjectIdGenerators.PropertyGenerator.class,
         property = "id",

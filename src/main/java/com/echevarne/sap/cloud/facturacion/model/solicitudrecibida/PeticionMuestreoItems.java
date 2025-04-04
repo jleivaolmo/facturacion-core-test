@@ -26,18 +26,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
 import com.echevarne.sap.cloud.facturacion.constants.ConstEntities;
+import com.echevarne.sap.cloud.facturacion.gestionestados.Bloqueada;
+import com.echevarne.sap.cloud.facturacion.gestionestados.CreadaRecibida;
+import com.echevarne.sap.cloud.facturacion.gestionestados.Erronea;
+import com.echevarne.sap.cloud.facturacion.gestionestados.Facturable;
+import com.echevarne.sap.cloud.facturacion.gestionestados.Procesable;
+import com.echevarne.sap.cloud.facturacion.gestionestados.Transicionable;
+import com.echevarne.sap.cloud.facturacion.gestionestados.ValidadaAutorizada;
+import com.echevarne.sap.cloud.facturacion.gestionestados.util.EstadosUtils;
 import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
 import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataEstado;
 import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataMotivosEstado;
+import com.echevarne.sap.cloud.facturacion.model.trazabilidad.Trazabilidad;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import org.hibernate.annotations.*;
 
 /**
@@ -47,15 +53,13 @@ import org.hibernate.annotations.*;
  */
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(
 	name = ConstEntities.ENTIDAD_PETICIONMUESTREOITEMS,
 	indexes={
 		@Index(name = "PeticionMuestreoItems_byIDItem",  columnList="fk_PeticionMuestreo,idItem", unique=true),
 		@Index(name = "PeticionMuestreoItems_byCodigoPrueba",  columnList="codigoPrueba", unique=false),
 })
-public class PeticionMuestreoItems extends BasicEntity implements SetComponent {
+public class PeticionMuestreoItems extends BasicEntity implements Transicionable<Trazabilidad>, SetComponent {
 
 	/**
 	 *
@@ -164,6 +168,31 @@ public class PeticionMuestreoItems extends BasicEntity implements SetComponent {
 	@JoinColumn(name = "fk_PeticionMuestreo", nullable = false)
 	@JsonBackReference
 	private PeticionMuestreo peticion;
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="prueba")
+	@JsonManagedReference
+	private Set<PetMuesItemAlerta> alertas = new HashSet<>();
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="prueba")
+	@BatchSize(size = 50)
+	@JsonManagedReference
+	private Set<PetMuesItemEstado> estados = new HashSet<>();
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="prueba")
+	@JsonManagedReference
+	@JsonAlias({ "codigoSnomed", "codigosSnomed" })
+	private Set<PetMuesItemSnomed> codigoSnomed = new HashSet<>();
+
+	@OneToOne(cascade = CascadeType.ALL, mappedBy="prueba", fetch = FetchType.LAZY)
+	@LazyToOne(LazyToOneOption.NO_PROXY)
+	@JsonManagedReference
+	private PetMuesItemPrecio precio;
+
+	@OneToOne(mappedBy="itemRec", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@LazyToOne(LazyToOneOption.NO_PROXY)
+	@JsonIgnore
+	@BatchSize(size=100)
+	private Trazabilidad trazabilidad;
 
 	/**
 	 * @return the idItem
@@ -527,6 +556,21 @@ public class PeticionMuestreoItems extends BasicEntity implements SetComponent {
 	}
 
 	/**
+	 * @return the precio
+	 */
+	public PetMuesItemPrecio getPrecio() {
+		return this.precio;
+	}
+
+	/**
+	 * @param precio
+	 *            the precio to set
+	 */
+	public void setPrecio(PetMuesItemPrecio precio) {
+		this.precio = precio;
+	}
+
+	/**
 	 * @return the bloqueoAutomatico
 	 */
 	public boolean isBloqueoAutomatico() {
@@ -540,12 +584,108 @@ public class PeticionMuestreoItems extends BasicEntity implements SetComponent {
 		this.bloqueoAutomatico = bloqueoAutomatico;
 	}
 
+	/**
+	 * @return the alertas
+	 */
+	@Override
+	public Set<String> obtieneAlertas() {
+		return this.alertas.stream().filter(alerta -> !alerta.isInactive())
+		.map(PetMuesItemAlerta::getCodigoAlerta)
+		.collect(Collectors.toSet());
+	}
+
+	@Override
+	public PeticionMuestreo obtienePadre() {
+		return this.getPeticion();
+	}
+
+	@Override
+	@JsonIgnore
+	public String obtieneNivelEntity() {
+		return EstadosUtils.NIVEL_POSICION;
+	}
+
+	/**
+	 * @return the alertas
+	 */
+	public Set<PetMuesItemAlerta> getAlertas() {
+		return this.alertas;
+	}
+
+	/**
+	 * @param alertas
+	 *            the alertas to set
+	 */
+	public void setAlertas(Set<PetMuesItemAlerta> alertas) {
+		this.alertas = alertas;
+	}
+
+	/**
+	 * @return the estados
+	 */
+	public Set<PetMuesItemEstado> getEstados() {
+		return this.estados;
+	}
+
+	/**
+	 * @param estados
+	 *            the estados to set
+	 */
+	public void setEstados(Set<PetMuesItemEstado> estados) {
+		this.estados = estados;
+	}
+
+	/**
+	 * @return the trazabilidad
+	 */
+	public Trazabilidad getTrazabilidad() {
+		return trazabilidad;
+	}
+
+	/**
+	 * @param trazabilidad the trazabilidad to set
+	 */
+	public void setTrazabilidad(Trazabilidad trazabilidad) {
+		this.trazabilidad = trazabilidad;
+	}
+
+	/**
+	 * @return the codigosSnomed
+	 */
+	public Set<PetMuesItemSnomed> getCodigoSnomed() {
+		return codigoSnomed;
+	}
+
+	/**
+	 * @param codigoSnomed the codigosSnomed to set
+	 */
+	public void setCodigoSnomed(Set<PetMuesItemSnomed> codigoSnomed) {
+		this.codigoSnomed = codigoSnomed;
+	}
+
+	public List<String> getCodigosEstado() {
+		return estados.stream().map(PetMuesItemEstado::getCodigoEstado).collect(toList());
+	}
+
+	public List<String> getCodigosAlertas() {
+		return alertas.stream().map(PetMuesItemAlerta::getCodigoAlerta).collect(toList());
+	}
+
+	@Transient
+	@JsonIgnore
+	@Override
+	public boolean contieneValidada() {
+		return this.getEstados().stream()
+				.anyMatch(x -> ValidadaAutorizada.CODIGO.equals(x.getCodigoEstado()) || ValidadaAutorizada.CODIGO_AU.equals(x.getCodigoEstado()));
+	}
+
 	@Override
 	public boolean onEquals(Object obj) {
 		if (this == obj) return true;
 		if (obj == null || getClass() != obj.getClass()) return false;
 		PeticionMuestreoItems other = (PeticionMuestreoItems) obj;
-		return 	Objects.equals(cantidadRequerida, other.cantidadRequerida) &&
+		return 	Objects.equals(alertas, other.alertas) &&
+				Objects.equals(cantidadRequerida, other.cantidadRequerida) &&
 				Objects.equals(codigoCargo, other.codigoCargo) &&
 				Objects.equals(codigoCliente, other.codigoCliente) &&
 				Objects.equals(codigoLote, other.codigoLote) &&
@@ -553,7 +693,7 @@ public class PeticionMuestreoItems extends BasicEntity implements SetComponent {
 				Objects.equals(codigoMaterialFacturacion, other.codigoMaterialFacturacion) &&
 				Objects.equals(codigoMaterialFacturacionPerfil, other.codigoMaterialFacturacionPerfil) &&
 				Objects.equals(codigoPrueba, other.codigoPrueba) &&
-			
+				Objects.equals(codigoSnomed, other.codigoSnomed) &&
 				Objects.equals(delegacionProductiva, other.delegacionProductiva) &&
 				dependeResultado == other.dependeResultado &&
 				Objects.equals(descripcionMaterial, other.descripcionMaterial) &&
@@ -562,7 +702,7 @@ public class PeticionMuestreoItems extends BasicEntity implements SetComponent {
 				esInformada == other.esInformada &&
 				esPerfil == other.esPerfil &&
 				esPrivado == other.esPrivado &&
-				
+				Objects.equals(estados, other.estados) &&
 				esTerceros == other.esTerceros &&
 				idItem == other.idItem &&
 				idParent == other.idParent &&
@@ -570,18 +710,72 @@ public class PeticionMuestreoItems extends BasicEntity implements SetComponent {
 				Objects.equals(nifCliente, other.nifCliente) &&
 				Objects.equals(numeroAutorizacion, other.numeroAutorizacion) &&
 				Objects.equals(numeroOperacion, other.numeroOperacion) &&
-				
+				Objects.equals(precio, other.precio) &&
 				Objects.equals(tipoMuestra, other.tipoMuestra) &&
 				tipoPosicion == other.tipoPosicion &&
 				Objects.equals(unidadMaterial, other.unidadMaterial);
 	}
 
+	@Override
+	public boolean transicionar(Procesable procesadorEstado, MasDataEstado estadoOrigen, boolean manual) {
+		return procesadorEstado.doTransicion(this, estadoOrigen, manual);
+	}
+
+	@Override
+	public Map<MasDataMotivosEstado, String[]> obtieneMotivo(Procesable procesadorEstado, MasDataEstado estadoOrigen, boolean manual) {
+		return procesadorEstado.getMotivo(this, estadoOrigen, manual);
+	}
+
+	@Override
+	public Trazabilidad obtieneTrazabilidad() {
+		return this.getTrazabilidad();
+	}
+
+	public Optional<PetMuesItemEstado> getEstado(String codigoEstado) {
+		return estados.stream().filter(estado -> Objects.equals(estado.getCodigoEstado(), codigoEstado)).filter(x -> !x.getInactive()).findFirst();
+	}
+
+	public Date getFechaEstado(String codigoEstado) {
+		return getEstado(codigoEstado).map(PetMuesItemEstado::getFechaEstado).orElse(null);
+	}
+
+	@Override
+	@JsonIgnore
+	public Optional<List<String>> obtieneDestinos() {
+		// Obtiene los estados que vienen en la peticion
+		Set<PetMuesItemEstado> estadosPeticion = this.getEstados();
+		if(estadosPeticion.size() > 0)
+			return Optional.of(estadosPeticion.stream()
+					.map(PetMuesItemEstado::getCodigoEstado)
+					.collect(Collectors.toList()));
+		else {
+			if (this.getTrazabilidad()!= null && Facturable.CODIGO.equals(this.getTrazabilidad().getUltimoEstado()) ) {
+				return Optional.of(Arrays.asList(Erronea.CODIGO, Bloqueada.CODIGO, CreadaRecibida.CODIGO));
+			} else if (this.getTrazabilidad()!= null && ValidadaAutorizada.CODIGO.equals(this.getTrazabilidad().getUltimoEstado()) ) {
+				return Optional.of(Arrays.asList(Bloqueada.CODIGO, CreadaRecibida.CODIGO));
+			}else {
+				return Optional.empty();
+			}
+		}
+	}
+
+	/**
+	 * @return
+	 * @return set of pruebas
+	 */
+	@Override
+	public List<Object> obtieneHijos() {
+		return Collections.emptyList();
+	}
 
 	@Override
 	public void setCabecera(BasicEntity cabecera) {
 		this.setPeticion((PeticionMuestreo) cabecera);
 	}
 
-	
+	@Override
+	public boolean transicionarV2(Procesable procesadorEstado, MasDataEstado estadoOrigen, boolean manual) {
+		return procesadorEstado.doTransicionV2(this, estadoOrigen, manual);
+	}
 
 }

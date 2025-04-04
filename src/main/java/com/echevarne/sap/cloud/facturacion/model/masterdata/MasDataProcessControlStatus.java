@@ -6,10 +6,7 @@ import com.echevarne.sap.cloud.facturacion.model.BasicMasDataEntity;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.Sap;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.enums.PropertyValueListEnum;
 import com.google.common.base.Objects;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.ColumnDefault;
@@ -28,8 +25,6 @@ import org.hibernate.annotations.NaturalId;
 @Setter
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
-@AllArgsConstructor
-@NoArgsConstructor
 public class MasDataProcessControlStatus extends BasicMasDataEntity {
 
 	private static final long serialVersionUID = -1043017219840344210L;

@@ -17,9 +17,7 @@ import org.hibernate.annotations.LazyToOneOption;
 import com.echevarne.sap.cloud.facturacion.model.BasicMasDataEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -34,8 +32,6 @@ import lombok.Setter;
 		uniqueConstraints = { @UniqueConstraint(columnNames = {"fk_EstadoOrigen","fk_EstadoDestino"}) })
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
-@AllArgsConstructor
-@NoArgsConstructor
 public class MasDataTransicionEstado extends BasicMasDataEntity {
 
 	private static final long serialVersionUID = -1053512514149313632L;
@@ -54,6 +50,9 @@ public class MasDataTransicionEstado extends BasicMasDataEntity {
 
 	@Basic
 	boolean automatico;
+
+	public MasDataTransicionEstado() {
+	}
 
 	public MasDataTransicionEstado(MasDataEstado origen, MasDataEstado destino) {
 		this.origen = origen;

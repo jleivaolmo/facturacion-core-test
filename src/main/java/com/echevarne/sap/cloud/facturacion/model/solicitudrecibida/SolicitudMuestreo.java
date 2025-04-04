@@ -13,14 +13,16 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import com.echevarne.sap.cloud.facturacion.constants.ConstEntities;
+import com.echevarne.sap.cloud.facturacion.gestionestados.Procesable;
+import com.echevarne.sap.cloud.facturacion.gestionestados.Transicionable;
+import com.echevarne.sap.cloud.facturacion.gestionestados.util.EstadosUtils;
 import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
 import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataEstado;
 import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataMotivosEstado;
+import com.echevarne.sap.cloud.facturacion.model.trazabilidad.TrazabilidadAlbaran;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.*;
 
 /**
@@ -42,9 +44,7 @@ import org.hibernate.annotations.*;
 @Table(name = ConstEntities.ENTIDAD_SOLICITUDMUESTREO, indexes = {
 		@Index(name = "IDX_SMbyCodigoPeticion", columnList = "codigoPeticion", unique = true) })
 @JsonIgnoreProperties(ignoreUnknown = true)
-@AllArgsConstructor
-@NoArgsConstructor
-public class SolicitudMuestreo extends BasicEntity  {
+public class SolicitudMuestreo extends BasicEntity implements Transicionable<TrazabilidadAlbaran> {
 
 	/**
 	 *
@@ -80,6 +80,19 @@ public class SolicitudMuestreo extends BasicEntity  {
 	@OneToMany(mappedBy = "solicitud", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JsonManagedReference
 	private Set<PeticionMuestreo> peticion = new HashSet<>();
+
+	@OneToMany(mappedBy = "solicitud", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private Set<ProductosAdicionales> adicionales = new HashSet<>();
+
+	@OneToMany(mappedBy = "solicitud", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JsonManagedReference
+	private Set<SolMuesEstado> estados = new HashSet<>();
+
+	@OneToOne(mappedBy = "solicitudRec", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@LazyToOne(LazyToOneOption.NO_PROXY)
+	@JsonIgnore
+	private TrazabilidadAlbaran trazabilidad;
 
 	public String getCodigoOficinaVentas() {
 		return codigoOficinaVentas;
@@ -176,6 +189,36 @@ public class SolicitudMuestreo extends BasicEntity  {
 		this.peticion = peticion;
 	}
 
+	/**
+	 * @return the estados
+	 */
+	public Set<SolMuesEstado> getEstados() {
+		return estados;
+	}
+
+	/**
+	 * @param estados the estados to set
+	 */
+	public void setEstados(Set<SolMuesEstado> estados) {
+		this.estados = estados;
+	}
+
+	/**
+	 * @param estado the estados to add
+	 */
+	public void addEstados(SolMuesEstado estado) {
+		this.estados.add(estado);
+		estado.setSolicitud(this);
+	}
+
+	/**
+	 * @param estado the estados to remove
+	 */
+	public void removeEstados(SolMuesEstado estado) {
+		this.estados.remove(estado);
+		estado.setSolicitud(null);
+	}
+
 	public boolean isEsMixta() {
 		return esMixta;
 	}
@@ -192,6 +235,28 @@ public class SolicitudMuestreo extends BasicEntity  {
 		this.esEshop = esEshop;
 	}
 
+	public Set<ProductosAdicionales> getAdicionales() {
+		return adicionales;
+	}
+
+	public void setAdicionales(Set<ProductosAdicionales> adicionales) {
+		this.adicionales = adicionales;
+	}
+
+	/**
+	 * @return the trazabilidad
+	 */
+	public TrazabilidadAlbaran getTrazabilidad() {
+		return trazabilidad;
+	}
+
+	/**
+	 * @param trazabilidad the trazabilidad to set
+	 */
+	public void setTrazabilidad(TrazabilidadAlbaran trazabilidad) {
+		this.trazabilidad = trazabilidad;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 *
@@ -206,11 +271,11 @@ public class SolicitudMuestreo extends BasicEntity  {
 		SolicitudMuestreo other = (SolicitudMuestreo) obj;
 		return Objects.equals(codigoOficinaVentas, other.codigoOficinaVentas)
 				&& Objects.equals(codigoUsuarioExterno, other.codigoUsuarioExterno)
-				
+				&& Objects.equals(estados, other.estados)
 				&& Objects.equals(numeroReferenciaCliente, other.numeroReferenciaCliente)
 				&& Objects.equals(numeroReferenciaExterno, other.numeroReferenciaExterno)
 				&& Objects.equals(peticion, other.peticion) && Objects.equals(esMixta, other.esMixta)
-				&& Objects.equals(codigoSistema, other.codigoSistema);
+				&& Objects.equals(adicionales, other.adicionales) && Objects.equals(codigoSistema, other.codigoSistema);
 	}
 
 	@JsonIgnore
@@ -232,12 +297,67 @@ public class SolicitudMuestreo extends BasicEntity  {
 		this.codigoSistema = codigoSistema;
 	}
 
+	@Override
+	public boolean transicionar(Procesable procesadorEstado, MasDataEstado estadoOrigen, boolean manual) {
+		return procesadorEstado.doTransicion(this, estadoOrigen, manual);
+	}
+
+	@Override
+	public Map<MasDataMotivosEstado, String[]> obtieneMotivo(Procesable procesadorEstado, MasDataEstado estadoOrigen, boolean manual) {
+		return procesadorEstado.getMotivo(this, estadoOrigen, manual);
+	}
+
+	@Override
+	public TrazabilidadAlbaran obtieneTrazabilidad() {
+		return this.trazabilidad;
+	}
+
+	@Override
+	public Optional<List<String>> obtieneDestinos() {
+		// Obtiene los estados que vienen en la peticion
+		if(this.estados == null) return Optional.empty();
+		if(this.estados.size() > 0)
+			return Optional.of(this.estados.stream()
+					.map(SolMuesEstado::getCodigoEstado)
+					.collect(Collectors.toList()));
+		else
+			return Optional.empty();
+	}
+
+	@Override
+	public Set<String> obtieneAlertas() {
+		return Collections.emptySet();
+	}
+
+	@Override
+	public List<PeticionMuestreo> obtieneHijos() {
+		return this.getPeticion().stream().collect(Collectors.toList());
+	}
+
+	@Override
+	public Transicionable<?> obtienePadre() {
+		return null;
+	}
+
+	@Override
+	public String obtieneNivelEntity() {
+		return EstadosUtils.NIVEL_ALBARAN;
+	}
+
+	@Override
+	public boolean contieneValidada() {
+		return this.obtieneHijos().stream().anyMatch(PeticionMuestreo::contieneValidada);
+	}
+
 	@Transient
 	@JsonIgnore
 	public Set<PeticionMuestreoItems> getPruebasMutua() {
 		return this.getPeticion().stream().filter(x -> !x.isEsPrivado()).flatMap(x -> x.getPruebas().stream()).collect(Collectors.toSet());
 	}
 
-	
+	@Override
+	public boolean transicionarV2(Procesable procesadorEstado, MasDataEstado estadoOrigen, boolean manual) {
+		return procesadorEstado.doTransicionV2(this, estadoOrigen, manual);
+	}
 
 }

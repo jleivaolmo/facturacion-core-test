@@ -18,24 +18,19 @@ import com.echevarne.sap.cloud.facturacion.constants.ConstEntities;
 import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @Cacheable
-@AllArgsConstructor
-@NoArgsConstructor
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "read-only-region" )
 @Table(
 	name = ConstEntities.ENTIDAD_ENTITYLISTNAME,
 	indexes = {
 		@Index(name = "IDX_byNombreEntidad", columnList = "nombreEntidad", unique = true),
 	}
-	
 )
 public class EntityListName extends BasicEntity {
 

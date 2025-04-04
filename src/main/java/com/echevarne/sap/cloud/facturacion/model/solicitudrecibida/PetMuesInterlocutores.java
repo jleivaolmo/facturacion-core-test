@@ -19,14 +19,10 @@ import com.echevarne.sap.cloud.facturacion.constants.ConstEntities;
 import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
 import com.echevarne.sap.cloud.facturacion.model.privados.DatosPagador;
 import com.echevarne.sap.cloud.facturacion.model.privados.TipoDocumento;
-
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 
 /**
@@ -44,8 +40,6 @@ import lombok.NoArgsConstructor;
 @Table(name = ConstEntities.ENTIDAD_PETMUESINTERLOCUTORES,
 indexes={@Index(name = "IDX_byRolInterlocutor",  columnList="fk_PeticionMuestreo,rolInterlocutor", unique=true)})
 @SapEntitySet(creatable = false, updatable = false, searchable = true, deletable = false)
-@AllArgsConstructor
-@NoArgsConstructor
 public class PetMuesInterlocutores extends BasicEntity implements SetComponent {
 
 	/**

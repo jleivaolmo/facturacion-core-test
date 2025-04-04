@@ -7,9 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 /**
  * Class for the Entity {@link Log}.
@@ -21,8 +20,6 @@ import lombok.NoArgsConstructor;
  * @since 06/24/2019
  */
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "T_Log")
 @SapEntitySet(creatable = false, updatable = false, searchable = true, deletable = false)
 public class Log extends BasicEntity {

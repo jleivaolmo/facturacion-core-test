@@ -5,13 +5,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataEstado;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 
-import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -22,8 +19,6 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = false)
 @ToString(callSuper = false, includeFieldNames = false)
 @SapEntitySet(creatable = true, updatable = true, searchable = true, deletable = true)
-@AllArgsConstructor
-@NoArgsConstructor
 public class ParamGlobalCliente extends BasicParamEntity{
 
 

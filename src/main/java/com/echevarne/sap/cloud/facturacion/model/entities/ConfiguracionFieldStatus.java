@@ -5,9 +5,7 @@ import javax.persistence.*;
 import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
 import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataEstadosGrupo;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -26,8 +24,6 @@ import org.hibernate.annotations.LazyToOneOption;
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "read-only-region" )
 // @SequenceAlias(name = ConstSequences.SECUENCIA_CONFIGURA)
-@AllArgsConstructor
-@NoArgsConstructor
 public class ConfiguracionFieldStatus extends BasicEntity {
 
 	/**

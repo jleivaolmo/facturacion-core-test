@@ -3,10 +3,6 @@ package com.echevarne.sap.cloud.facturacion.model.masterdata;
 import javax.persistence.*;
 
 import com.echevarne.sap.cloud.facturacion.model.BasicMasDataEntity;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
@@ -18,8 +14,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "T_MasDataEstadoEjecucion")
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
-@AllArgsConstructor
-@NoArgsConstructor
 public class MasDataEstadoEjecucion extends BasicMasDataEntity {
 
 	private static final long serialVersionUID = -212256118626675336L;

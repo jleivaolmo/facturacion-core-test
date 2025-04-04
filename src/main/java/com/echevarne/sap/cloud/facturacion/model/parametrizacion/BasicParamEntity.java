@@ -12,8 +12,6 @@ import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
  */
 @MappedSuperclass
 public abstract class BasicParamEntity extends BasicEntity {
-	
-	public BasicParamEntity() {}
 
     /**
      *

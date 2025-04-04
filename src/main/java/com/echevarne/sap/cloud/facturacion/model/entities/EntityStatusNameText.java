@@ -19,8 +19,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Builder(toBuilder = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Setter
 @Cacheable
@@ -28,7 +28,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 @Table(name = "IT_EntityStatusNameText")
 @SapEntitySet(creatable = false, updatable = false, searchable = true)
 @JPAExit(allowAll = true, fieldId = "id", fieldDescription = "nombreStatus")
-
 public class EntityStatusNameText extends BasicEntity{
 
 	/**

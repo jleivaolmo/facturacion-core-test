@@ -7,9 +7,7 @@ import javax.persistence.*;
 import com.echevarne.sap.cloud.facturacion.model.BasicMasDataEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -22,8 +20,6 @@ import org.hibernate.annotations.LazyToOneOption;
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @Table(name="T_MasDataAlerta_AlertaPrivados")
-@AllArgsConstructor
-@NoArgsConstructor
 public class MasDataAlertaAlertaPrivados extends BasicMasDataEntity {
 
 	private static final long serialVersionUID = -7679663596861623947L;

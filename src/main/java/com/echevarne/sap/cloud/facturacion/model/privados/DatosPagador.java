@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
+import com.echevarne.sap.cloud.facturacion.model.trazabilidad.TrazabilidadSolicitud;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.Sap;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.enums.SemanticsEnum;
@@ -31,7 +32,7 @@ import org.hibernate.annotations.LazyToOneOption;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PACKAGE)
 @Builder
 @Table(name = "T_DatosPagador", indexes = {
 		@Index(name = "DatosPagador_byDocumento", columnList = "tipoDocumentoPagador,numeroDocumentoPagador", unique = false),
@@ -99,7 +100,12 @@ public class DatosPagador extends BasicEntity {
 	@ColumnDefault("false")
 	private boolean esEmpresa;
 
-	
+	@OneToOne(fetch = FetchType.LAZY)
+	@LazyToOne(LazyToOneOption.NO_PROXY)
+	@JoinColumn(name = "fk_TrazabilidadSolicitud", nullable = false)
+	@JsonIgnore
+	private TrazabilidadSolicitud trzSolicitud;
+
 	@Override
 	public boolean onEquals(Object obj) {
 		return equals(obj);

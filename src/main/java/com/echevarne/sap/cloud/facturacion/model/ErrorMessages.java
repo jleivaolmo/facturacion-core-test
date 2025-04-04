@@ -13,17 +13,12 @@ import org.hibernate.annotations.LazyToOneOption;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 /**
  * Class for the Entity {@link ErrorMessages}.
  * @author Hernan Girardi
  * @since 20/04/2020
  */
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(
 		name = "T_ErrorMessages",
 		indexes = {

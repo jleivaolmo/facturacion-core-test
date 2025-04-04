@@ -5,9 +5,6 @@ import javax.persistence.MappedSuperclass;
 
 import com.echevarne.sap.cloud.facturacion.odata.annotations.Sap;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 /**
  * Abstract super class for all the Master Data Entities.
  *
@@ -15,8 +12,6 @@ import lombok.NoArgsConstructor;
  * @since 23/04/2020
  */
 @MappedSuperclass
-@AllArgsConstructor
-@NoArgsConstructor
 public abstract class BasicMasDataEntity extends BasicEntity {
 
 	private static final long serialVersionUID = -1743006636222517818L;

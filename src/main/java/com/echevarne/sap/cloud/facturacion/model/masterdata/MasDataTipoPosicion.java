@@ -13,9 +13,7 @@ import org.hibernate.annotations.NaturalId;
 import com.echevarne.sap.cloud.facturacion.model.BasicMasDataEntity;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
@@ -31,8 +29,6 @@ import lombok.Setter;
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @SapEntitySet(creatable = false, updatable = false, deletable = false)
-@AllArgsConstructor
-@NoArgsConstructor
 public class MasDataTipoPosicion extends BasicMasDataEntity {
 
 	private static final long serialVersionUID = 4436448692594259381L;

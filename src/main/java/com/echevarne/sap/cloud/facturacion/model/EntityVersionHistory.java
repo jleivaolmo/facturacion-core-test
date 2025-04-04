@@ -1,8 +1,6 @@
 package com.echevarne.sap.cloud.facturacion.model;
 
 import javax.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 /**
  * Class for the Entity {@link EntityVersionHistory}.
@@ -20,8 +18,6 @@ import lombok.NoArgsConstructor;
 			@Index(name = "IDX_byClassNameEntityIdVersion", columnList = "className,entityId,version", unique = false),
 		}
 )
-@AllArgsConstructor
-@NoArgsConstructor
 public class EntityVersionHistory extends BasicEntity {
 
 	private static final long serialVersionUID = 7538192627870580L;

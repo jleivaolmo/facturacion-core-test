@@ -8,10 +8,7 @@ import com.echevarne.sap.cloud.facturacion.constants.ConstEntities;
 import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -40,8 +37,6 @@ import org.hibernate.annotations.LazyToOneOption;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "read-only-region" )
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class EntityFieldName extends BasicEntity {
 
 	private static final long serialVersionUID = 1544995561599528877L;

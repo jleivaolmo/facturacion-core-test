@@ -7,9 +7,7 @@ import javax.persistence.*;
 
 import com.echevarne.sap.cloud.facturacion.model.BasicMasDataEntity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.NaturalId;
@@ -19,8 +17,6 @@ import org.hibernate.annotations.NaturalId;
 @Setter
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name="T_MasDataAlertaPrivados",
 	indexes= {@Index(name = "IDX_ByCodigoOperacion",  columnList="codigoOperacion", unique=true)})
 public class MasDataAlertaPrivados extends BasicMasDataEntity {

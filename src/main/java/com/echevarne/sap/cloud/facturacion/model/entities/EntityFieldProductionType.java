@@ -16,9 +16,7 @@ import org.hibernate.annotations.LazyToOneOption;
 import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
@@ -27,8 +25,6 @@ import lombok.Setter;
 @Setter
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "read-only-region" )
-@AllArgsConstructor
-@NoArgsConstructor
 public class EntityFieldProductionType extends BasicEntity {
 	private static final long serialVersionUID = 1L;
 

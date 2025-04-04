@@ -14,11 +14,7 @@ import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
 
 import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataMessagesGrupo;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 /**
  * Abstract super class for all the Messages Entities.
@@ -27,8 +23,6 @@ import lombok.NoArgsConstructor;
  * @since 17/10/2020
  */
 @MappedSuperclass
-@AllArgsConstructor
-@NoArgsConstructor
 public class BasicMessagesEntity extends BasicEntity {
 
 	/**

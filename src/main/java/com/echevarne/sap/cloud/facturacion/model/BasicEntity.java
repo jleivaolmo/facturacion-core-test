@@ -29,8 +29,6 @@ import org.hibernate.id.enhanced.StandardOptimizerDescriptor;
  */
 @MappedSuperclass
 public abstract class BasicEntity implements Serializable, Comparable {
-	
-	public BasicEntity() {}
 
 	private final static ObjectReflectionUtil OBJECT_REFLECTION = new ObjectReflectionUtilImpl();
 

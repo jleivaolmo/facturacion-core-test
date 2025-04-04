@@ -2,11 +2,11 @@ package com.echevarne.sap.cloud.facturacion.model;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.*;
+
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 
 /**
  * Class for the Entity {@link GestionCambio}.
@@ -18,8 +18,6 @@ import lombok.NoArgsConstructor;
  * @since 06/24/2019
  */
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(
 	name = "T_GestionCambio",
 	indexes = {

@@ -19,8 +19,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Builder(toBuilder = true)
-@AllArgsConstructor
-@NoArgsConstructor
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PUBLIC)
 @Getter
 @Setter
 @Cacheable

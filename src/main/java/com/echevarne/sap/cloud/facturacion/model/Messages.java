@@ -4,11 +4,11 @@ package com.echevarne.sap.cloud.facturacion.model;
 import com.echevarne.sap.cloud.facturacion.model.masterdata.MasDataMessagesGrupo;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
+
 import javax.persistence.*;
 
 /**
@@ -24,8 +24,6 @@ import javax.persistence.*;
 	@Index(name = "IDX_byLangAndErrorCode",  columnList="lang,errorCode", unique=true)
 })
 @SapEntitySet(creatable = false, updatable = false, searchable = true, deletable = false)
-@AllArgsConstructor
-@NoArgsConstructor
 public class Messages extends BasicEntity {
 
 	public static final String DEFAULT_KEY = "default";

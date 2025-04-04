@@ -6,9 +6,7 @@ import com.echevarne.sap.cloud.facturacion.constants.ConstEntities;
 import com.echevarne.sap.cloud.facturacion.model.BasicEntity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -32,8 +30,6 @@ import org.hibernate.annotations.LazyToOneOption;
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "read-only-region" )
 @Table(name = ConstEntities.ENTIDAD_ENTITYLISTNAMETEXT)
-@AllArgsConstructor
-@NoArgsConstructor
 public class EntityListNameText extends BasicEntity {
 
 	/**

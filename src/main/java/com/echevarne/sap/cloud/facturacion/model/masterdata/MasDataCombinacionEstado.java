@@ -7,9 +7,7 @@ import com.echevarne.sap.cloud.facturacion.model.BasicMasDataEntity;
 import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -28,8 +26,6 @@ import org.hibernate.annotations.LazyToOneOption;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @Table(name=ConstEntities.ENTIDAD_MASDATACOMBINACIONESTADO)
 @SapEntitySet(creatable = true, updatable = true, searchable = false, deletable = false)
-@AllArgsConstructor
-@NoArgsConstructor
 public class MasDataCombinacionEstado extends BasicMasDataEntity {
 
     /**

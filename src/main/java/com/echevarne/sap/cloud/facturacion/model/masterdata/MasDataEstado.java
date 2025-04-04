@@ -15,7 +15,6 @@ import com.echevarne.sap.cloud.facturacion.odata.annotations.SapEntitySet;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -35,7 +34,6 @@ import org.hibernate.annotations.Cache;
 @Cacheable
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @SapEntitySet(creatable = true, updatable = true, searchable = false, deletable = false)
-@AllArgsConstructor
 @NoArgsConstructor
 public class MasDataEstado extends BasicMasDataEntity {
 
